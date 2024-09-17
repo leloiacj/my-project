@@ -918,13 +918,13 @@ export interface ApiProductProduct extends Schema.CollectionType {
     title: Attribute.String & Attribute.Required;
     description: Attribute.Text;
     image: Attribute.Media<'images'>;
-    kilometers: Attribute.BigInteger &
+    kilometers: Attribute.Decimal &
       Attribute.Required &
       Attribute.SetMinMax<
         {
-          min: '0';
+          min: 0;
         },
-        string
+        number
       >;
     dateOfFirstRegistration: Attribute.Date & Attribute.Required;
     logged_users: Attribute.Relation<
@@ -937,13 +937,13 @@ export interface ApiProductProduct extends Schema.CollectionType {
       'manyToMany',
       'api::favourite-veichle.favourite-veichle'
     >;
-    price: Attribute.BigInteger &
+    price: Attribute.Decimal &
       Attribute.Required &
       Attribute.SetMinMax<
         {
-          min: '1';
+          min: 0;
         },
-        string
+        number
       >;
     gearBox: Attribute.Enumeration<['Automatico', 'Manuale']> &
       Attribute.Required;
@@ -1048,14 +1048,6 @@ export interface ApiProductProduct extends Schema.CollectionType {
         'Altro'
       ]
     >;
-    kw: Attribute.Integer &
-      Attribute.Required &
-      Attribute.SetMinMax<
-        {
-          min: 1;
-        },
-        number
-      >;
     littleDescription: Attribute.String;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;

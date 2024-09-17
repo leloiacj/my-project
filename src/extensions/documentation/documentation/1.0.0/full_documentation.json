@@ -14,7 +14,7 @@
       "name": "Apache 2.0",
       "url": "https://www.apache.org/licenses/LICENSE-2.0.html"
     },
-    "x-generation-date": "2024-09-17T06:44:04.878Z"
+    "x-generation-date": "2024-09-17T07:00:29.585Z"
   },
   "x-strapi-config": {
     "path": "/documentation",
@@ -1271,9 +1271,8 @@
                                                   }
                                                 },
                                                 "kilometers": {
-                                                  "type": "string",
-                                                  "pattern": "^\\d*$",
-                                                  "example": "123456789"
+                                                  "type": "number",
+                                                  "format": "float"
                                                 },
                                                 "dateOfFirstRegistration": {
                                                   "type": "string",
@@ -1320,9 +1319,8 @@
                                                   }
                                                 },
                                                 "price": {
-                                                  "type": "string",
-                                                  "pattern": "^\\d*$",
-                                                  "example": "123456789"
+                                                  "type": "number",
+                                                  "format": "float"
                                                 },
                                                 "gearBox": {
                                                   "type": "string",
@@ -1437,9 +1435,6 @@
                                                     "Crossover",
                                                     "Altro"
                                                   ]
-                                                },
-                                                "kw": {
-                                                  "type": "integer"
                                                 },
                                                 "littleDescription": {
                                                   "type": "string"
@@ -2507,9 +2502,8 @@
                                                   }
                                                 },
                                                 "kilometers": {
-                                                  "type": "string",
-                                                  "pattern": "^\\d*$",
-                                                  "example": "123456789"
+                                                  "type": "number",
+                                                  "format": "float"
                                                 },
                                                 "dateOfFirstRegistration": {
                                                   "type": "string",
@@ -2556,9 +2550,8 @@
                                                   }
                                                 },
                                                 "price": {
-                                                  "type": "string",
-                                                  "pattern": "^\\d*$",
-                                                  "example": "123456789"
+                                                  "type": "number",
+                                                  "format": "float"
                                                 },
                                                 "gearBox": {
                                                   "type": "string",
@@ -2673,9 +2666,6 @@
                                                     "Crossover",
                                                     "Altro"
                                                   ]
-                                                },
-                                                "kw": {
-                                                  "type": "integer"
                                                 },
                                                 "littleDescription": {
                                                   "type": "string"
@@ -2963,8 +2953,7 @@
               "color",
               "cv",
               "brend",
-              "plate",
-              "kw"
+              "plate"
             ],
             "type": "object",
             "properties": {
@@ -2986,9 +2975,8 @@
                 "example": "string or id"
               },
               "kilometers": {
-                "type": "string",
-                "pattern": "^\\d*$",
-                "example": "123456789"
+                "type": "number",
+                "format": "float"
               },
               "dateOfFirstRegistration": {
                 "type": "string",
@@ -3023,9 +3011,8 @@
                 }
               },
               "price": {
-                "type": "string",
-                "pattern": "^\\d*$",
-                "example": "123456789"
+                "type": "number",
+                "format": "float"
               },
               "gearBox": {
                 "type": "string",
@@ -3141,9 +3128,6 @@
                   "Altro"
                 ]
               },
-              "kw": {
-                "type": "integer"
-              },
               "littleDescription": {
                 "type": "string"
               }
@@ -3208,8 +3192,7 @@
           "color",
           "cv",
           "brend",
-          "plate",
-          "kw"
+          "plate"
         ],
         "properties": {
           "title": {
@@ -3841,9 +3824,8 @@
             }
           },
           "kilometers": {
-            "type": "string",
-            "pattern": "^\\d*$",
-            "example": "123456789"
+            "type": "number",
+            "format": "float"
           },
           "dateOfFirstRegistration": {
             "type": "string",
@@ -4056,9 +4038,8 @@
                                                     }
                                                   },
                                                   "kilometers": {
-                                                    "type": "string",
-                                                    "pattern": "^\\d*$",
-                                                    "example": "123456789"
+                                                    "type": "number",
+                                                    "format": "float"
                                                   },
                                                   "dateOfFirstRegistration": {
                                                     "type": "string",
@@ -4105,9 +4086,8 @@
                                                     }
                                                   },
                                                   "price": {
-                                                    "type": "string",
-                                                    "pattern": "^\\d*$",
-                                                    "example": "123456789"
+                                                    "type": "number",
+                                                    "format": "float"
                                                   },
                                                   "gearBox": {
                                                     "type": "string",
@@ -4222,9 +4202,6 @@
                                                       "Crossover",
                                                       "Altro"
                                                     ]
-                                                  },
-                                                  "kw": {
-                                                    "type": "integer"
                                                   },
                                                   "littleDescription": {
                                                     "type": "string"
@@ -4428,9 +4405,8 @@
             }
           },
           "price": {
-            "type": "string",
-            "pattern": "^\\d*$",
-            "example": "123456789"
+            "type": "number",
+            "format": "float"
           },
           "gearBox": {
             "type": "string",
@@ -4545,9 +4521,6 @@
               "Crossover",
               "Altro"
             ]
-          },
-          "kw": {
-            "type": "integer"
           },
           "littleDescription": {
             "type": "string"

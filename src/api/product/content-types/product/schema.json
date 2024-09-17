@@ -29,9 +29,9 @@
       ]
     },
     "kilometers": {
-      "type": "biginteger",
+      "type": "decimal",
       "required": true,
-      "min": "0"
+      "min": 0
     },
     "dateOfFirstRegistration": {
       "type": "date",
@@ -50,8 +50,8 @@
       "inversedBy": "products"
     },
     "price": {
-      "type": "biginteger",
-      "min": "1",
+      "type": "decimal",
+      "min": 0,
       "required": true
     },
     "gearBox": {
@@ -175,11 +175,6 @@
         "Crossover",
         "Altro"
       ]
-    },
-    "kw": {
-      "type": "integer",
-      "required": true,
-      "min": 1
     },
     "littleDescription": {
       "type": "string"
