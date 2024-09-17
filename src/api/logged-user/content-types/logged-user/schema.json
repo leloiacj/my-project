@@ -1,0 +1,36 @@
+{
+  "kind": "collectionType",
+  "collectionName": "logged_users",
+  "info": {
+    "singularName": "logged-user",
+    "pluralName": "logged-users",
+    "displayName": "LoggedUser",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "username": {
+      "type": "email",
+      "required": true
+    },
+    "password": {
+      "type": "password",
+      "required": true
+    },
+    "favourite_veichle": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::favourite-veichle.favourite-veichle",
+      "inversedBy": "logged_user"
+    },
+    "favourite_car_ids": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::product.product",
+      "mappedBy": "logged_users"
+    }
+  }
+}

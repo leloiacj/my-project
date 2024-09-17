@@ -1,0 +1,46 @@
+{
+  "kind": "collectionType",
+  "collectionName": "register_forms",
+  "info": {
+    "singularName": "register-form",
+    "pluralName": "register-forms",
+    "displayName": "registerForm"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "name": {
+      "type": "string",
+      "required": true
+    },
+    "surname": {
+      "type": "string",
+      "required": true
+    },
+    "email": {
+      "type": "email",
+      "required": true,
+      "unique": true
+    },
+    "password": {
+      "type": "password",
+      "private": true,
+      "required": true,
+      "minLength": 5
+    },
+    "birthDate": {
+      "type": "date",
+      "required": true
+    },
+    "gender": {
+      "type": "enumeration",
+      "enum": [
+        "Uomo",
+        "Donna",
+        "Non Specificato"
+      ]
+    }
+  }
+}

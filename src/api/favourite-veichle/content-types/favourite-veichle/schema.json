@@ -1,0 +1,28 @@
+{
+  "kind": "collectionType",
+  "collectionName": "favourite_veichles",
+  "info": {
+    "singularName": "favourite-veichle",
+    "pluralName": "favourite-veichles",
+    "displayName": "FavouriteVeichle",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "logged_user": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::logged-user.logged-user",
+      "mappedBy": "favourite_veichle"
+    },
+    "products": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::product.product",
+      "mappedBy": "favourite_veichles"
+    }
+  }
+}

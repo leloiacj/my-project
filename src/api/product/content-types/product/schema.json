@@ -1,0 +1,188 @@
+{
+  "kind": "collectionType",
+  "collectionName": "products",
+  "info": {
+    "singularName": "product",
+    "pluralName": "products",
+    "displayName": "Product",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "title": {
+      "type": "string",
+      "required": true
+    },
+    "description": {
+      "type": "text",
+      "required": false
+    },
+    "image": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
+      "allowedTypes": [
+        "images"
+      ]
+    },
+    "kilometers": {
+      "type": "biginteger",
+      "required": true,
+      "min": "0"
+    },
+    "dateOfFirstRegistration": {
+      "type": "date",
+      "required": true
+    },
+    "logged_users": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::logged-user.logged-user",
+      "inversedBy": "favourite_car_ids"
+    },
+    "favourite_veichles": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::favourite-veichle.favourite-veichle",
+      "inversedBy": "products"
+    },
+    "price": {
+      "type": "biginteger",
+      "min": "1",
+      "required": true
+    },
+    "gearBox": {
+      "type": "enumeration",
+      "enum": [
+        "Automatico",
+        "Manuale"
+      ],
+      "required": true
+    },
+    "fuelType": {
+      "type": "enumeration",
+      "enum": [
+        "Ibrido",
+        "Diesel",
+        "Elettrico",
+        "Benzina",
+        "Gpl",
+        "Metano"
+      ]
+    },
+    "color": {
+      "type": "enumeration",
+      "enum": [
+        "Nero",
+        "Grigio",
+        "Bianco",
+        "Argento",
+        "Blu",
+        "Rosso",
+        "Marrone",
+        "Verde",
+        "Beige",
+        "Arancione",
+        "Oro",
+        "Giallo",
+        "Viola"
+      ],
+      "required": true
+    },
+    "cv": {
+      "type": "biginteger",
+      "required": true,
+      "max": "500",
+      "min": "1"
+    },
+    "brend": {
+      "type": "enumeration",
+      "enum": [
+        "Abarth  ",
+        "Alfa Romeo  ",
+        "Audi  ",
+        "BMW  ",
+        "Citroën  ",
+        "Cupra  ",
+        "Dacia  ",
+        "DS Automobiles  ",
+        "EVO  ",
+        "Fiat  ",
+        "Ford  ",
+        "Honda  ",
+        "Hyundai  ",
+        "Jaguar  ",
+        "Jeep  ",
+        "Kia  ",
+        "Lancia  ",
+        "Land Rover  ",
+        "Lexus  ",
+        "MG  ",
+        "MINI  ",
+        "Mazda  ",
+        "Mercedes-Benz  ",
+        "Mitsubishi  ",
+        "Nissan  ",
+        "Opel  ",
+        "Peugeot  ",
+        "Renault  ",
+        "Seat  ",
+        "Skoda  ",
+        "Smart  ",
+        "SsangYong  ",
+        "Subaru  ",
+        "Suzuki  ",
+        "Toyota  ",
+        "Volkswagen  ",
+        "Volvo"
+      ],
+      "required": true
+    },
+    "plate": {
+      "type": "string",
+      "required": true,
+      "minLength": 7,
+      "maxLength": 7,
+      "unique": true
+    },
+    "tractionType": {
+      "type": "enumeration",
+      "enum": [
+        "Integrale (4x4)",
+        "Anteriore",
+        "Posteriore"
+      ]
+    },
+    "carType": {
+      "type": "enumeration",
+      "enum": [
+        "SUV",
+        "Station Wagon",
+        "Berlina",
+        "Van / Minibus",
+        "Coupé",
+        "Cabriolet",
+        "Pickup",
+        "Familiare",
+        "City Car",
+        "Compatta",
+        "Monovolume",
+        "Fuoristrada",
+        "Sportiva",
+        "Crossover",
+        "Altro"
+      ]
+    },
+    "kw": {
+      "type": "integer",
+      "required": true,
+      "min": 1
+    },
+    "littleDescription": {
+      "type": "string"
+    }
+  }
+}
