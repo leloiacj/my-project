@@ -26,6 +26,14 @@ const myExtraRoutes = [
       policies: [],
     },
   },
+  {
+    method: "GET",
+    path: "/products-detail-single/:id",
+    handler: "product-detail.findOneDetail",
+    config: {
+      policies: [],
+    },
+  },
 ];
 
 module.exports = customRouter(defaultRouter, myExtraRoutes);

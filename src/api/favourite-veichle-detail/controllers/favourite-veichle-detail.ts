@@ -1,9 +1,8 @@
 "use strict";
-
+// controller che permette la visualizzazione della lista in singolo con in dettaglio le macchine e l'username di chi ha salvato nei preferiti
 module.exports = {
   async findWithDetails(ctx) {
     const { id } = ctx.params;
-
     try {
       const favouriteVeichle = await strapi.db
         .query("api::favourite-veichle.favourite-veichle")
@@ -12,7 +11,7 @@ module.exports = {
           populate: {
             products: {
               populate: {
-                image: true, // Popola anche il campo dell'immagine
+                image: true,
               },
             },
             logged_user: true,
@@ -28,9 +27,7 @@ module.exports = {
           title: item.title,
           littleDescription: item.littleDescription,
           kilometers: item.kilometers,
-          image:
-            item.image?.formats?.large?.url || // Se esiste il formato 'large'
-            item.image?.url, // Altrimenti prendi l'URL generale
+          image: item.image?.formats?.large?.url || item.image?.url,
           gearBox: item.gearBox,
           price: item.price,
           dateOfFirstRegistration: item.dateOfFirstRegistration,

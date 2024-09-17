@@ -1,3 +1,5 @@
+// controller che da in visualizzazione tutte le auto presenti nel database con dettagli definiti dallo sviluppatore
+
 import { factories } from "@strapi/strapi";
 
 export default factories.createCoreController(

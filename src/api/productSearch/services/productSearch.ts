@@ -1,0 +1,5 @@
+/**
+ * productSearch service
+ */
+
+export default () => ({});
