@@ -937,14 +937,7 @@ export interface ApiProductProduct extends Schema.CollectionType {
       'manyToMany',
       'api::favourite-veichle.favourite-veichle'
     >;
-    price: Attribute.Decimal &
-      Attribute.Required &
-      Attribute.SetMinMax<
-        {
-          min: 0;
-        },
-        number
-      >;
+    price: Attribute.BigInteger & Attribute.Required;
     gearBox: Attribute.Enumeration<['Automatico', 'Manuale']> &
       Attribute.Required;
     fuelType: Attribute.Enumeration<

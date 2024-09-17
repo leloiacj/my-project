@@ -50,8 +50,7 @@
       "inversedBy": "products"
     },
     "price": {
-      "type": "decimal",
-      "min": 0,
+      "type": "biginteger",
       "required": true
     },
     "gearBox": {

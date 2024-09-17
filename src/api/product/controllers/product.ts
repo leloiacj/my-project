@@ -9,6 +9,12 @@ export default factories.createCoreController(
         populate: "image",
       };
 
+      // Funzione per formattare i numeri con il punto dopo le prime due cifre
+      const formatNumber = (number) => {
+        if (!number) return null;
+        return number.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
+      };
+
       const { data, meta } = await super.find(ctx);
 
       const filteredData = data.map((item) => ({
@@ -19,10 +25,10 @@ export default factories.createCoreController(
         image:
           item.attributes.image?.data?.attributes?.formats?.large?.url ||
           item.attributes.image?.data?.attributes?.url,
-        kilometers: item.attributes.kilometers,
+        kilometers: formatNumber(item.attributes.kilometers),
         dateOfFirstRegistration: item.attributes.dateOfFirstRegistration,
         gearBox: item.attributes.gearBox,
-        price: item.attributes.price,
+        price: formatNumber(item.attributes.price),
         fuelType: item.attributes.fuelType,
         color: item.attributes.color,
         cv: item.attributes.cv,

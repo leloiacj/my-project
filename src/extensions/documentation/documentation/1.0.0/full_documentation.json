@@ -14,7 +14,7 @@
       "name": "Apache 2.0",
       "url": "https://www.apache.org/licenses/LICENSE-2.0.html"
     },
-    "x-generation-date": "2024-09-17T07:00:29.585Z"
+    "x-generation-date": "2024-09-17T07:29:50.289Z"
   },
   "x-strapi-config": {
     "path": "/documentation",
@@ -1319,8 +1319,9 @@
                                                   }
                                                 },
                                                 "price": {
-                                                  "type": "number",
-                                                  "format": "float"
+                                                  "type": "string",
+                                                  "pattern": "^\\d*$",
+                                                  "example": "123456789"
                                                 },
                                                 "gearBox": {
                                                   "type": "string",
@@ -2550,8 +2551,9 @@
                                                   }
                                                 },
                                                 "price": {
-                                                  "type": "number",
-                                                  "format": "float"
+                                                  "type": "string",
+                                                  "pattern": "^\\d*$",
+                                                  "example": "123456789"
                                                 },
                                                 "gearBox": {
                                                   "type": "string",
@@ -3011,8 +3013,9 @@
                 }
               },
               "price": {
-                "type": "number",
-                "format": "float"
+                "type": "string",
+                "pattern": "^\\d*$",
+                "example": "123456789"
               },
               "gearBox": {
                 "type": "string",
@@ -4086,8 +4089,9 @@
                                                     }
                                                   },
                                                   "price": {
-                                                    "type": "number",
-                                                    "format": "float"
+                                                    "type": "string",
+                                                    "pattern": "^\\d*$",
+                                                    "example": "123456789"
                                                   },
                                                   "gearBox": {
                                                     "type": "string",
@@ -4405,8 +4409,9 @@
             }
           },
           "price": {
-            "type": "number",
-            "format": "float"
+            "type": "string",
+            "pattern": "^\\d*$",
+            "example": "123456789"
           },
           "gearBox": {
             "type": "string",

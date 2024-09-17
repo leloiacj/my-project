@@ -8,6 +8,10 @@ export default factories.createCoreController(
         ...ctx.query,
         populate: "image",
       };
+      const formatNumber = (number) => {
+        if (!number) return null;
+        return number.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
+      };
 
       const { data, meta } = await super.find(ctx);
 
@@ -15,12 +19,12 @@ export default factories.createCoreController(
         id: item.id,
         title: item.attributes.title,
         littleDescription: item.attributes.littleDescription,
-        kilometers: item.attributes.kilometers,
+        kilometers: formatNumber(item.attributes.kilometers),
         image:
           item.attributes.image?.data?.attributes?.formats?.small?.url || // cambiare tra small, medium, large
           item.attributes.image?.data?.attributes?.url,
         gearBox: item.attributes.gearBox,
-        price: item.attributes.price,
+        price: formatNumber(item.attributes.price),
         dateOfFirstRegistration: item.attributes.dateOfFirstRegistration,
       }));
 

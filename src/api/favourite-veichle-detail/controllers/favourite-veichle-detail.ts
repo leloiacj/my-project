@@ -10,7 +10,11 @@ module.exports = {
         .findOne({
           where: { id },
           populate: {
-            products: true,
+            products: {
+              populate: {
+                image: true, // Popola anche il campo dell'immagine
+              },
+            },
             logged_user: true,
           },
         });
@@ -24,9 +28,9 @@ module.exports = {
           title: item.title,
           littleDescription: item.littleDescription,
           kilometers: item.kilometers,
-          // image:
-          //   item.image?.data?.attributes?.formats?.large?.url ||
-          //   item.image?.data?.attributes?.url,
+          image:
+            item.image?.formats?.large?.url || // Se esiste il formato 'large'
+            item.image?.url, // Altrimenti prendi l'URL generale
           gearBox: item.gearBox,
           price: item.price,
           dateOfFirstRegistration: item.dateOfFirstRegistration,
