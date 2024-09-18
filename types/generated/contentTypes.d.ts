@@ -881,7 +881,7 @@ export interface ApiLoggedUserLoggedUser extends Schema.CollectionType {
       'api::favourite-veichle.favourite-veichle'
     >;
     name: Attribute.String & Attribute.Required;
-    surname: Attribute.String;
+    surname: Attribute.String & Attribute.Required;
     gender: Attribute.Enumeration<['Uomo', 'Donna', 'Altro']>;
     birthOfDate: Attribute.Date;
     createdAt: Attribute.DateTime;

@@ -14,7 +14,7 @@
       "name": "Apache 2.0",
       "url": "https://www.apache.org/licenses/LICENSE-2.0.html"
     },
-    "x-generation-date": "2024-09-18T13:38:48.521Z"
+    "x-generation-date": "2024-09-18T14:10:13.824Z"
   },
   "x-strapi-config": {
     "path": "/documentation",
@@ -1696,7 +1696,8 @@
             "required": [
               "username",
               "password",
-              "name"
+              "name",
+              "surname"
             ],
             "type": "object",
             "properties": {
@@ -1793,7 +1794,8 @@
         "required": [
           "username",
           "password",
-          "name"
+          "name",
+          "surname"
         ],
         "properties": {
           "username": {
