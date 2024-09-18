@@ -880,11 +880,10 @@ export interface ApiLoggedUserLoggedUser extends Schema.CollectionType {
       'oneToOne',
       'api::favourite-veichle.favourite-veichle'
     >;
-    favourite_car_ids: Attribute.Relation<
-      'api::logged-user.logged-user',
-      'manyToMany',
-      'api::product.product'
-    >;
+    name: Attribute.String & Attribute.Required;
+    surname: Attribute.String;
+    gender: Attribute.Enumeration<['Uomo', 'Donna', 'Altro']>;
+    birthOfDate: Attribute.Date;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -918,20 +917,8 @@ export interface ApiProductProduct extends Schema.CollectionType {
     title: Attribute.String & Attribute.Required;
     description: Attribute.Text;
     image: Attribute.Media<'images'>;
-    kilometers: Attribute.Decimal &
-      Attribute.Required &
-      Attribute.SetMinMax<
-        {
-          min: 0;
-        },
-        number
-      >;
+    kilometers: Attribute.BigInteger & Attribute.Required;
     dateOfFirstRegistration: Attribute.Date & Attribute.Required;
-    logged_users: Attribute.Relation<
-      'api::product.product',
-      'manyToMany',
-      'api::logged-user.logged-user'
-    >;
     favourite_veichles: Attribute.Relation<
       'api::product.product',
       'manyToMany',

@@ -29,19 +29,12 @@
       ]
     },
     "kilometers": {
-      "type": "decimal",
-      "required": true,
-      "min": 0
+      "type": "biginteger",
+      "required": true
     },
     "dateOfFirstRegistration": {
       "type": "date",
       "required": true
-    },
-    "logged_users": {
-      "type": "relation",
-      "relation": "manyToMany",
-      "target": "api::logged-user.logged-user",
-      "inversedBy": "favourite_car_ids"
     },
     "favourite_veichles": {
       "type": "relation",

@@ -26,11 +26,23 @@
       "target": "api::favourite-veichle.favourite-veichle",
       "inversedBy": "logged_user"
     },
-    "favourite_car_ids": {
-      "type": "relation",
-      "relation": "manyToMany",
-      "target": "api::product.product",
-      "mappedBy": "logged_users"
+    "name": {
+      "type": "string",
+      "required": true
+    },
+    "surname": {
+      "type": "string"
+    },
+    "gender": {
+      "type": "enumeration",
+      "enum": [
+        "Uomo",
+        "Donna",
+        "Altro"
+      ]
+    },
+    "birthOfDate": {
+      "type": "date"
     }
   }
 }
