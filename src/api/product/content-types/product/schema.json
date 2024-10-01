@@ -170,6 +170,10 @@
     },
     "littleDescription": {
       "type": "string"
+    },
+    "isFavourite": {
+      "type": "boolean",
+      "default": false
     }
   }
 }

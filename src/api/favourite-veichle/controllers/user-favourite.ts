@@ -1,19 +1,31 @@
 "use strict";
 
 module.exports = ({ strapi }) => ({
-  async addToFavorites(ctx) {
-    const { loggedUserId, productId } = ctx.request.body;
+  async manageFavourites(ctx) {
+    const { loggedUserId, productId, action } = ctx.request.body;
 
-    if (!loggedUserId || !productId) {
-      return ctx.badRequest("loggedUserId and productId are required.");
+    // Verifica se l'ID dell'utente loggato, l'ID del prodotto e l'azione sono presenti
+    if (!loggedUserId || !productId || !action) {
+      return ctx.badRequest(
+        "loggedUserId, productId, and action are required."
+      );
+    }
+
+    if (!["add", "remove"].includes(action)) {
+      return ctx.badRequest("Invalid action. It should be 'add' or 'remove'.");
     }
 
     try {
+      // Trova l'utente loggato con i prodotti preferiti popolati
       const loggedUser = await strapi.entityService.findOne(
         "api::logged-user.logged-user",
         loggedUserId,
         {
-          populate: ["favourite_veichle"],
+          populate: {
+            favourite_veichle: {
+              populate: ["products"], // Assicurati che i prodotti siano popolati
+            },
+          },
         }
       );
 
@@ -24,25 +36,31 @@ module.exports = ({ strapi }) => ({
       let favouriteVeichle = loggedUser.favourite_veichle;
 
       if (!favouriteVeichle) {
-        favouriteVeichle = await strapi.entityService.create(
-          "api::favourite-veichle.favourite-veichle",
-          {
-            data: {
-              logged_user: loggedUserId,
-              products: [],
-            },
-          }
-        );
+        // Se non esiste un "favouriteVeichle", lo creiamo solo per l'azione "add"
+        if (action === "add") {
+          favouriteVeichle = await strapi.entityService.create(
+            "api::favourite-veichle.favourite-veichle",
+            {
+              data: {
+                id: loggedUserId,
+                logged_user: loggedUserId,
+                products: [],
+              },
+            }
+          );
 
-        await strapi.entityService.update(
-          "api::logged-user.logged-user",
-          loggedUserId,
-          {
-            data: {
-              favourite_veichle: favouriteVeichle.id,
-            },
-          }
-        );
+          await strapi.entityService.update(
+            "api::logged-user.logged-user",
+            loggedUserId,
+            {
+              data: {
+                favourite_veichle: favouriteVeichle.id,
+              },
+            }
+          );
+        } else {
+          return ctx.notFound("No favourite products found for this user.");
+        }
       }
 
       const product = await strapi.entityService.findOne(
@@ -54,32 +72,72 @@ module.exports = ({ strapi }) => ({
         return ctx.notFound("Product not found.");
       }
 
-      const isProductAlreadyInFavorites =
+      const isProductInFavorites =
         Array.isArray(favouriteVeichle.products) &&
         favouriteVeichle.products.some((p) => p.id === productId);
 
-      if (isProductAlreadyInFavorites) {
-        return ctx.conflict("Product is already in the favorites.");
+      // Gestione dell'azione "add"
+      if (action === "add") {
+        if (isProductInFavorites) {
+          return ctx.send({
+            message: "Product is already in favorites, no changes made.",
+            favouriteVeichle,
+          });
+        }
+
+        // Aggiungi il prodotto ai preferiti
+        const updatedFavouriteVeichle = await strapi.entityService.update(
+          "api::favourite-veichle.favourite-veichle",
+          favouriteVeichle.id,
+          {
+            data: {
+              products: [
+                ...(Array.isArray(favouriteVeichle.products)
+                  ? favouriteVeichle.products.map((p) => p.id)
+                  : []),
+                productId,
+              ],
+            },
+          }
+        );
+
+        return ctx.send({
+          message: "Product added to favorites.",
+          favouriteVeichle: updatedFavouriteVeichle,
+        });
       }
 
-      const updatedFavouriteVeichle = await strapi.entityService.update(
-        "api::favourite-veichle.favourite-veichle",
-        favouriteVeichle.id,
-        {
-          data: {
-            products: { connect: [productId] },
-          },
+      // Gestione dell'azione "remove"
+      if (action === "remove") {
+        if (!isProductInFavorites) {
+          return ctx.send({
+            message: "Product was not in favorites, no changes made.",
+            favouriteVeichle,
+          });
         }
-      );
 
-      return ctx.send({
-        message: "Product added to favorites.",
-        favouriteVeichle: updatedFavouriteVeichle,
-      });
+        // Rimuovi il prodotto dai preferiti
+        const updatedFavouriteVeichle = await strapi.entityService.update(
+          "api::favourite-veichle.favourite-veichle",
+          favouriteVeichle.id,
+          {
+            data: {
+              products: favouriteVeichle.products
+                .filter((p) => p.id !== productId) // Rimuovi il prodotto dall'array
+                .map((p) => p.id), // Mappa solo gli ID dei prodotti
+            },
+          }
+        );
+
+        return ctx.send({
+          message: "Product removed from favorites.",
+          favouriteVeichle: updatedFavouriteVeichle,
+        });
+      }
     } catch (error) {
-      console.error("Error adding product to favorites:", error);
+      console.error("Error managing product in favorites:", error);
       return ctx.internalServerError(
-        "An error occurred while adding the product to favorites."
+        "An error occurred while managing the product in favorites."
       );
     }
   },

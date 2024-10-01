@@ -38,6 +38,7 @@ export default factories.createCoreController(
         plate: item.attributes.plate,
         tractionType: item.attributes.tractionType,
         carType: item.attributes.carType,
+        isFavourite: item.attributes.isFavourite,
       }));
 
       return { data: filteredData, meta };

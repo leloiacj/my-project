@@ -92,6 +92,7 @@ export default factories.createCoreController(
           plate: data.attributes.plate,
           tractionType: data.attributes.tractionType,
           carType: data.attributes.carType,
+          isFavourite: data.attributes.isFavourite,
         };
 
         return { data: formattedData };

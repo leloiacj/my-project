@@ -14,7 +14,7 @@
       "name": "Apache 2.0",
       "url": "https://www.apache.org/licenses/LICENSE-2.0.html"
     },
-    "x-generation-date": "2024-09-20T11:04:26.093Z"
+    "x-generation-date": "2024-10-01T10:58:14.981Z"
   },
   "x-strapi-config": {
     "path": "/documentation",
@@ -25,7 +25,7 @@
   },
   "servers": [
     {
-      "url": "http://10.11.11.124:1337/api",
+      "url": "http://10.11.11.116:1337/api",
       "description": "Development server"
     }
   ],
@@ -1421,6 +1421,9 @@
                                                 "littleDescription": {
                                                   "type": "string"
                                                 },
+                                                "isFavourite": {
+                                                  "type": "boolean"
+                                                },
                                                 "createdAt": {
                                                   "type": "string",
                                                   "format": "date-time"
@@ -2710,6 +2713,9 @@
                                     "littleDescription": {
                                       "type": "string"
                                     },
+                                    "isFavourite": {
+                                      "type": "boolean"
+                                    },
                                     "createdAt": {
                                       "type": "string",
                                       "format": "date-time"
@@ -3084,6 +3090,9 @@
               },
               "littleDescription": {
                 "type": "string"
+              },
+              "isFavourite": {
+                "type": "boolean"
               }
             }
           }
@@ -4213,6 +4222,9 @@
                                       "littleDescription": {
                                         "type": "string"
                                       },
+                                      "isFavourite": {
+                                        "type": "boolean"
+                                      },
                                       "createdAt": {
                                         "type": "string",
                                         "format": "date-time"
@@ -4440,6 +4452,9 @@
           },
           "littleDescription": {
             "type": "string"
+          },
+          "isFavourite": {
+            "type": "boolean"
           },
           "createdAt": {
             "type": "string",

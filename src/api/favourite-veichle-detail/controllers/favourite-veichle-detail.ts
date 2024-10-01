@@ -24,6 +24,7 @@ module.exports = {
 
       const response = {
         products: favouriteVeichle.products.map((item) => ({
+          id: item.id,
           title: item.title,
           littleDescription: item.littleDescription,
           kilometers: item.kilometers,
@@ -31,6 +32,7 @@ module.exports = {
           gearBox: item.gearBox,
           price: item.price,
           dateOfFirstRegistration: item.dateOfFirstRegistration,
+          isFavourite: item.isFavourite,
         })),
         username: favouriteVeichle.logged_user.username,
       };

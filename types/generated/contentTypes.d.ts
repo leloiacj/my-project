@@ -1029,6 +1029,7 @@ export interface ApiProductProduct extends Schema.CollectionType {
       ]
     >;
     littleDescription: Attribute.String;
+    isFavourite: Attribute.Boolean & Attribute.DefaultTo<false>;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;

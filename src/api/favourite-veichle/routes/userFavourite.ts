@@ -2,11 +2,10 @@ export default {
   routes: [
     {
       method: "POST",
-      path: "/logged-users/favorites",
-      handler: "user-favourite.addToFavorites",
+      path: "/favourites/manage",
+      handler: "user-favourite.manageFavourites",
       config: {
         policies: [],
-        auth: false,
       },
     },
   ],
